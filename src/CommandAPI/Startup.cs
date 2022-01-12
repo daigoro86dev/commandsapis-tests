@@ -30,6 +30,7 @@ namespace CommandAPI
 
             services.AddDbContext<CommandContext>(opt => opt.UseNpgsql(builder.ConnectionString));
             services.AddControllers();
+
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
