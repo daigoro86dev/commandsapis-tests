@@ -1,3 +1,4 @@
+using System;
 using NBomber.Contracts;
 using NBomber.CSharp;
 

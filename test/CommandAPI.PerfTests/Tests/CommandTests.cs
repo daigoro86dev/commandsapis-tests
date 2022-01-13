@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CommandAPI.PerfTests.Scenarios;
 using FluentAssertions;
 using NBomber.CSharp;
@@ -19,7 +16,7 @@ namespace CommandAPI.PerfTests.Tests
         }
 
         [Theory]
-        [InlineData(50, 30)]
+        [InlineData(15, 5)]
         public void CommandsTest(int rps, int timeSpan)
         {
             var getAllCommandsScenario = _scenarioFixture.GetAllCommandsScenario()
