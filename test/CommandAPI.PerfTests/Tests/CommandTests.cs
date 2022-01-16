@@ -6,6 +6,7 @@ using Xunit;
 
 namespace CommandAPI.PerfTests.Tests
 {
+    [Trait("Category", "Performance")]
     public class CommandTests
     {
         private readonly ICommandsScenarioFixture _scenarioFixture;

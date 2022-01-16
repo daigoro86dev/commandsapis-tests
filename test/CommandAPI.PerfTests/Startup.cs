@@ -13,6 +13,7 @@ namespace CommandAPI.PerfTests
             services.AddScoped<ICommandsStepsFixture, CommandsStepsFixture>();
             services.AddScoped<IScenarioFixture, ScenarioFixture>();
             services.AddScoped<ICommandsScenarioFixture, CommandsScenarioFixture>();
+            services.AddScoped<ICommandsScenarioFixture, CommandsScenarioFixture>();
         }
     }
 }

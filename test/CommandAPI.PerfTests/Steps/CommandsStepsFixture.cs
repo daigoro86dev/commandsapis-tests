@@ -1,6 +1,7 @@
 using CommandAPI.PerfTests.HttpClients;
 using NBomber.Contracts;
 using NBomber.CSharp;
+using CommandAppClient.Clients;
 
 namespace CommandAPI.PerfTests.Steps
 {
@@ -17,10 +18,11 @@ namespace CommandAPI.PerfTests.Steps
         {
             return Step.Create("Get All Commands", async context =>
             {
-                var response =
-                    await _httpClient.SetClient().GetAsync("/api/commands", context.CancellationToken);
+                var response = await ApiClients.GetCommands();
 
-                return _httpClient.GetResponseStatusCode(response);
+                return response.IsSuccessful ?
+                    Response.Ok(statusCode: (int)response.StatusCode, sizeBytes: 1024)
+                    : Response.Fail(statusCode: (int)response.StatusCode, sizeBytes: 1024);
             });
         }
 
@@ -28,10 +30,11 @@ namespace CommandAPI.PerfTests.Steps
         {
             return Step.Create("Get Command By Id", async context =>
             {
-                var response =
-                    await _httpClient.SetClient().GetAsync($"/api/commands/{id}", context.CancellationToken);
+                var response = await ApiClients.GetCommandById(id);
 
-                return _httpClient.GetResponseStatusCode(response);
+                return response.IsSuccessful ?
+                    Response.Ok(statusCode: (int)response.StatusCode, sizeBytes: 1024)
+                    : Response.Fail(statusCode: (int)response.StatusCode, sizeBytes: 1024);
             });
         }
     }
